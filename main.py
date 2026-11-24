@@ -28,8 +28,8 @@ print(f"High (9:30–10:30 AM): {window_high:.2f}")
 print(f"Low  (9:30–10:30 AM): {window_low:.2f}")
 print(f'daily high: {daily_high:.2f}')
 print(f'daily low: {daily_low:.2f}')
-print(f'daily open: {spx.info['open']}')
-print(f'daily close: {hist['Close'].iloc[-1]:.2f}')
+print(f"daily open: {spx.info['open']}")
+print(f"daily close: {hist['Close'].iloc[-1]:.2f}")
 print(date)
 
 with open('data.csv', 'a', newline='') as csvfile:
