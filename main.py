@@ -37,4 +37,4 @@ with open('data.csv', 'a', newline='') as csvfile:
     writer.writerow([str(date), str(window_high), str(window_low), str(daily_high), str(daily_low), str(opening), str(close)])
 
 
-#attemtpting to push
+#attemtpting to push, fr this time
