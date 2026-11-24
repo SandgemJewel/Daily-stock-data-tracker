@@ -1,0 +1,23 @@
+name: schedule script
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "39 22 * * *"
+
+jobs:
+  runCode:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copy Code
+        uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install yfinance
+
+
