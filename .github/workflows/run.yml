@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "39 22 * * *"
 
+permissions:
+  contents: write
+
 jobs:
   runCode:
     runs-on: ubuntu-latest
@@ -20,4 +23,15 @@ jobs:
       - name: Install Dependencies
         run: pip install yfinance
 
+      - name: Run Code
+        run:
+          python main.py
+
+      - name: Commit and push the excel
+        run:
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add *.csv *.xlsx
+          git commit -m "daily stock data update" || exit 0
+          git push
 
