@@ -3,9 +3,9 @@ import datetime as dt
 import yfinance as yf
 date = dt.date.today()
 spx = yf.Ticker("^GSPC")
-
+tmr = date + dt.timedelta(days=1)
 # 1. Fetch intraday data (end is exclusive, so add 1 day)
-hist = spx.history(start="2026-11-23", end="2026-11-24", interval="1m")
+hist = spx.history(start=date, end=tmr, interval="1m")
 
 # 2. Filter to your specific time range (in the exchange's local timezone, America/New_York)
 window = hist.between_time("09:30", "10:30")
@@ -19,7 +19,9 @@ window_low = round(window["Low"].min(), 2)
 daily_high = round(hist["High"].max(),2)
 daily_low = round(hist["Low"].min() ,2)
 
-opening = round(spx.info['open'], 2)
+
+opening = round(hist["Open"].iloc[0], 2)
+# opening = round(spx.info['open'], 2)
 close = round(hist['Close'].iloc[-1], 2)
 
 
